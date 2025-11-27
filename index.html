@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kopi Prima - Premium Coffee Supplier</title>
+
+    <!-- Bootstrap & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-color: #8b4513;
+        --secondary-color: #d2691e;
+        --accent-color: #a0522d;
+        --dark-brown: #654321;
+        --light-brown: #deb887;
+        --cream: #f5f5dc;
+        --light-cream: #fff8dc;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        ) !important;
+        border: none !important;
+        color: white !important;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4) !important;
+        background: linear-gradient(
+          135deg,
+          var(--accent-color),
+          var(--primary-color)
+        ) !important;
+      }
+
+      .btn-outline-primary {
+        color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        background: transparent !important;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .badge.bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .badge.bg-success {
+        background-color: #228b22 !important;
+      }
+
+      .badge.bg-warning {
+        background-color: #daa520 !important;
+        color: #000 !important;
+      }
+
+      .badge.bg-info {
+        background-color: var(--accent-color) !important;
+        color: white !important;
+      }
+
+      .badge.bg-dark {
+        background-color: var(--dark-brown) !important;
+      }
+
+      .badge.bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          var(--light-cream) 0%,
+          var(--cream) 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        border-radius: 15px;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15) !important;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .coffee-bean {
+        position: fixed;
+        top: -50px;
+        font-size: 20px;
+        opacity: 0.7;
+        z-index: -1;
+        pointer-events: none;
+        animation: fall linear forwards;
+      }
+
+      .navbar {
+        transition: all 0.3s ease;
+        background: linear-gradient(
+          135deg,
+          var(--light-cream),
+          var(--cream)
+        ) !important;
+      }
+
+      .navbar-scrolled {
+        background: rgba(245, 245, 220, 0.95) !important;
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar-brand {
+        color: var(--primary-color) !important;
+        font-weight: bold;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--dark-brown) !important;
+        font-weight: 500;
+        margin: 0 0.5rem;
+        padding: 0.5rem 1rem !important;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        background-color: var(--primary-color);
+        color: white !important;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 60px 0;
+        }
+        .display-4 {
+          font-size: 2rem;
+        }
+        .hero-section {
+          margin-top: 76px;
+          text-align: center;
+        }
+      }
+
+      footer {
+        background: linear-gradient(
+          135deg,
+          var(--dark-brown),
+          #2c1a0f
+        ) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+          <i class="fas fa-coffee me-2"></i>KOPI PRIMA
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#quality">Quality</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center">
+            <span
+              id="userInfo"
+              class="me-3 text-muted small d-none d-md-block"
+            ></span>
+            <a
+              href="login.html"
+              id="loginBtn"
+              class="btn btn-outline-primary me-2"
+              >Login</a
+            >
+            <button id="logoutBtn" class="btn btn-outline-primary me-2 d-none">
+              Logout
+            </button>
+            <a href="products.html" class="btn btn-primary">
+              <i class="fas fa-shopping-bag me-1"></i>Shop
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-3">
+              Hi <span id="userName" class="text-primary">Guest</span>, Welcome
+              to Kopi Prima
+            </h1>
+            <h2 class="h3 text-muted mb-4">
+              Premium Coffee Supplier Since 1985
+            </h2>
+            <p class="lead mb-4">
+              Menyediakan biji kopi berkualitas tinggi dari perkebunan terbaik
+              di Indonesia
+            </p>
+            <div class="hero-buttons">
+              <a href="products.html" class="btn btn-primary btn-lg me-3"
+                >Lihat Produk</a
+              >
+              <a href="#contact" class="btn btn-outline-primary btn-lg"
+                >Hubungi Kami</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img
+              src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2061&q=80"
+              alt="Coffee Beans"
+              class="img-fluid rounded-3 shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="section bg-light">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-3 text-primary">
+              Profil Perusahaan
+            </h2>
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <h3 class="h2 mb-4 text-primary">PT. Kopi Prima Indonesia</h3>
+            <p class="lead mb-4">
+              Sebagai pelopor dalam industri kopi sejak 1985, Kopi Prima telah
+              menjadi pemasok terpercaya biji kopi berkualitas tinggi dari
+              berbagai daerah di Indonesia. Dengan pengalaman lebih dari 35
+              tahun, kami memahami seluk-beluk industri kopi dan terus
+              berkomitmen untuk memberikan yang terbaik kepada pelanggan kami.
+            </p>
+
+            <div class="row text-center">
+              <div class="col-4">
+                <div class="h3 text-primary fw-bold">35+</div>
+                <div class="text-muted">Tahun Pengalaman</div>
+              </div>
+              <div class="col-4">
+                <div class="h3 text-primary fw-bold">50+</div>
+                <div class="text-muted">Jenis Produk</div>
+              </div>
+              <div class="col-4">
+                <div class="h3 text-primary fw-bold">1000+</div>
+                <div class="text-muted">Klien Terpuaskan</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img
+              src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              alt="Coffee Factory"
+              class="img-fluid rounded-3 shadow"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body text-center p-4">
+                <i class="fas fa-eye fa-3x text-primary mb-3"></i>
+                <h4 class="card-title text-primary">Visi Kami</h4>
+                <p class="card-text">
+                  Menjadi perusahaan kopi terdepan yang diakui secara global
+                  dalam hal kualitas, inovasi, dan keberlanjutan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body text-center p-4">
+                <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
+                <h4 class="card-title text-primary">Misi Kami</h4>
+                <p class="card-text">
+                  Menyediakan biji kopi berkualitas tertinggi melalui proses
+                  yang berkelanjutan dan terus berinovasi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-3 text-primary">Produk Kami</h2>
+            <p class="lead text-muted">
+              Berbagai jenis biji kopi berkualitas dari daerah terbaik di
+              Indonesia
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Product 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card product-card shadow-sm border-0 h-100">
+              <img
+                src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                class="card-img-top"
+                alt="Arabica Coffee"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-primary">Kopi Arabica</h5>
+                <p class="card-text flex-grow-1">
+                  Biji kopi Arabica dengan aroma yang harum dan rasa yang
+                  kompleks.
+                </p>
+                <div class="mt-auto">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="badge bg-primary">Medium Roast</span>
+                    <span class="badge bg-success">Daerah Tinggi</span>
+                  </div>
+                  <a href="products.html" class="btn btn-primary w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card product-card shadow-sm border-0 h-100">
+              <img
+                src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                class="card-img-top"
+                alt="Robusta Coffee"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-primary">Kopi Robusta</h5>
+                <p class="card-text flex-grow-1">
+                  Kopi Robusta dengan cita rasa kuat dan kandungan kafein
+                  tinggi.
+                </p>
+                <div class="mt-auto">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="badge bg-dark">Dark Roast</span>
+                    <span class="badge bg-warning">High Caffeine</span>
+                  </div>
+                  <a href="products.html" class="btn btn-primary w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card product-card shadow-sm border-0 h-100">
+              <img
+                src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                class="card-img-top"
+                alt="Specialty Coffee"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-primary">Specialty Coffee</h5>
+                <p class="card-text flex-grow-1">
+                  Kopi spesialti dengan grade tinggi melalui proses seleksi
+                  ketat.
+                </p>
+                <div class="mt-auto">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="badge bg-success">Grade 1</span>
+                    <span class="badge bg-info">Specialty</span>
+                  </div>
+                  <a href="products.html" class="btn btn-primary w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card product-card shadow-sm border-0 h-100">
+              <img
+                src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                class="card-img-top"
+                alt="Coffee Blends"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-primary">Custom Blends</h5>
+                <p class="card-text flex-grow-1">
+                  Blend kopi custom sesuai kebutuhan bisnis Anda.
+                </p>
+                <div class="mt-auto">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span class="badge bg-secondary">Custom</span>
+                    <span class="badge bg-primary">Consistent</span>
+                  </div>
+                  <a href="products.html" class="btn btn-primary w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <a href="products.html" class="btn btn-outline-primary btn-lg">
+              Lihat Semua Produk <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section id="quality" class="section bg-light">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-3 text-primary">
+              Standar Kualitas
+            </h2>
+          </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <h3 class="h4 mb-4 text-primary">Proses Produksi Berkualitas</h3>
+            <div class="process-steps">
+              <div class="d-flex mb-4">
+                <div class="step-number">01</div>
+                <div class="ms-3">
+                  <h5 class="text-primary">Seleksi Biji</h5>
+                  <p class="text-muted mb-0">
+                    Biji kopi dipilih secara manual untuk memastikan hanya yang
+                    terbaik yang diproses
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex mb-4">
+                <div class="step-number">02</div>
+                <div class="ms-3">
+                  <h5 class="text-primary">Pengolahan</h5>
+                  <p class="text-muted mb-0">
+                    Proses pengolahan menggunakan teknologi modern dengan
+                    kontrol kualitas ketat
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex mb-4">
+                <div class="step-number">03</div>
+                <div class="ms-3">
+                  <h5 class="text-primary">Pemanggangan</h5>
+                  <p class="text-muted mb-0">
+                    Pemanggangan dengan suhu terkontrol untuk mengoptimalkan
+                    cita rasa
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="step-number">04</div>
+                <div class="ms-3">
+                  <h5 class="text-primary">Pengemasan</h5>
+                  <p class="text-muted mb-0">
+                    Pengemasan vakum untuk menjaga kesegaran dan aroma kopi
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <h3 class="h4 mb-4 text-primary">Sertifikasi</h3>
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="card border-0 text-center h-100">
+                  <div class="card-body">
+                    <i class="fas fa-certificate fa-2x text-primary mb-3"></i>
+                    <h6 class="text-primary">ISO 9001:2015</h6>
+                    <small class="text-muted">Sistem Manajemen Mutu</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card border-0 text-center h-100">
+                  <div class="card-body">
+                    <i class="fas fa-leaf fa-2x text-primary mb-3"></i>
+                    <h6 class="text-primary">Organic Certified</h6>
+                    <small class="text-muted">Produk Organik</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card border-0 text-center h-100">
+                  <div class="card-body">
+                    <i class="fas fa-recycle fa-2x text-primary mb-3"></i>
+                    <h6 class="text-primary">Sustainability</h6>
+                    <small class="text-muted">Praktik Berkelanjutan</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card border-0 text-center h-100">
+                  <div class="card-body">
+                    <i class="fas fa-globe fa-2x text-primary mb-3"></i>
+                    <h6 class="text-primary">Export Ready</h6>
+                    <small class="text-muted">Standar Internasional</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-3 text-primary">Hubungi Kami</h2>
+          </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <h3 class="h4 mb-4 text-primary">PT. Kopi Prima Indonesia</h3>
+            <div class="contact-details">
+              <div class="d-flex align-items-start mb-3">
+                <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                <div>
+                  <h5 class="h6 mb-1 text-primary">Alamat</h5>
+                  <p class="text-muted mb-0">
+                    Jl. Perkebunan No. 123<br />Jakarta Selatan 12560
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-3">
+                <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                <div>
+                  <h5 class="h6 mb-1 text-primary">Telepon</h5>
+                  <p class="text-muted mb-0">+62 857 9992 6085</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-3">
+                <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                <div>
+                  <h5 class="h6 mb-1 text-primary">Email</h5>
+                  <p class="text-muted mb-0">info@kopiprima.co.id</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fas fa-clock text-primary me-3 mt-1"></i>
+                <div>
+                  <h5 class="h6 mb-1 text-primary">Jam Operasional</h5>
+                  <p class="text-muted mb-0">
+                    Senin - Jumat: 08:00 - 17:00<br />Sabtu: 08:00 - 14:00
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card shadow border-0">
+              <div class="card-body p-4">
+                <h3 class="card-title h4 mb-4 text-primary">Kirim Pesan</h3>
+                <form id="contactForm">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label text-primary"
+                        >Nama *</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email" class="form-label text-primary"
+                        >Email *</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label for="phone" class="form-label text-primary"
+                        >Nomor Telepon *</label
+                      >
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label for="company" class="form-label text-primary"
+                        >Perusahaan</label
+                      >
+                      <input type="text" class="form-control" id="company" />
+                    </div>
+                    <div class="col-12">
+                      <label for="message" class="form-label text-primary"
+                        >Pesan *</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="message"
+                        rows="4"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-lg w-100"
+                      >
+                        <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold mb-3 text-light">
+              <i class="fas fa-coffee me-2"></i>KOPI PRIMA
+            </h5>
+            <p class="text-light">
+              Pemasok biji kopi berkualitas tinggi sejak 1985. Komitmen kami
+              adalah memberikan produk terbaik dengan layanan profesional.
+            </p>
+            <div class="social-links">
+              <a href="#" class="text-light me-3"
+                ><i class="fab fa-facebook fa-lg"></i
+              ></a>
+              <a href="#" class="text-light me-3"
+                ><i class="fab fa-instagram fa-lg"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3 text-light">Produk</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#products" class="text-light text-decoration-none"
+                  >Kopi Arabica</a
+                >
+              </li>
+              <li>
+                <a href="#products" class="text-light text-decoration-none"
+                  >Kopi Robusta</a
+                >
+              </li>
+              <li>
+                <a href="#products" class="text-light text-decoration-none"
+                  >Specialty Coffee</a
+                >
+              </li>
+              <li>
+                <a href="#products" class="text-light text-decoration-none"
+                  >Custom Blends</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2">
+            <h5 class="fw-bold mb-3 text-light">Tautan Cepat</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#home" class="text-light text-decoration-none"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a href="#profile" class="text-light text-decoration-none"
+                  >Profil</a
+                >
+              </li>
+              <li>
+                <a href="#products" class="text-light text-decoration-none"
+                  >Produk</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="text-light text-decoration-none"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4">
+            <h5 class="fw-bold mb-3 text-light">Kontak</h5>
+            <div class="footer-contact">
+              <p class="mb-2 text-light">
+                <i class="fas fa-map-marker-alt me-2"></i>Jakarta Selatan 12560
+              </p>
+              <p class="mb-2 text-light">
+                <i class="fas fa-phone me-2"></i>+62 857 9992 6085
+              </p>
+              <p class="mb-0 text-light">
+                <i class="fas fa-envelope me-2"></i>info@kopiprima.co.id
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="mb-0 text-light">
+              &copy; 2024 PT. Kopi Prima Indonesia. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+      function checkAuthentication() {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const currentUser = JSON.parse(
+          localStorage.getItem("currentUser") || "{}"
+        );
+        return { isLoggedIn: isLoggedIn === "true", user: currentUser };
+      }
+
+      function updateAuthUI() {
+        const auth = checkAuthentication();
+        const userInfo = document.getElementById("userInfo");
+        const loginBtn = document.getElementById("loginBtn");
+        const logoutBtn = document.getElementById("logoutBtn");
+        const userName = document.getElementById("userName");
+
+        if (auth.isLoggedIn && auth.user) {
+          if (userInfo) {
+            userInfo.textContent = `Hello, ${auth.user.username}`;
+            userInfo.classList.remove("d-none");
+          }
+          if (loginBtn) loginBtn.classList.add("d-none");
+          if (logoutBtn) logoutBtn.classList.remove("d-none");
+          if (userName) userName.textContent = auth.user.username;
+        } else {
+          if (userInfo) userInfo.classList.add("d-none");
+          if (loginBtn) loginBtn.classList.remove("d-none");
+          if (logoutBtn) logoutBtn.classList.add("d-none");
+          if (userName) userName.textContent = "Guest";
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+        updateAuthUI();
+        alert("Anda telah logout!");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        updateAuthUI();
+
+        document.getElementById("logoutBtn")?.addEventListener("click", logout);
+
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 100) {
+            navbar.classList.add("navbar-scrolled");
+          } else {
+            navbar.classList.remove("navbar-scrolled");
+          }
+        });
+
+        function createCoffeeBean() {
+          if (window.innerWidth > 768) {
+            const bean = document.createElement("div");
+            bean.className = "coffee-bean";
+            bean.innerHTML = "☕";
+            bean.style.left = Math.random() * window.innerWidth + "px";
+            bean.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(bean);
+
+            setTimeout(() => bean.remove(), 5000);
+          }
+        }
+        setInterval(createCoffeeBean, 1000);
+      });
+    </script>
+  </body>
+</html>
