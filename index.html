@@ -111,12 +111,19 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
+        padding-top: 76px;
       }
 
       .product-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: none;
         border-radius: 15px;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .product-card.animated {
+        animation: fadeInUp 0.8s ease forwards;
       }
 
       .product-card:hover {
@@ -141,6 +148,71 @@
         to {
           transform: translateY(100vh) rotate(360deg);
           opacity: 0;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
         }
       }
 
@@ -193,6 +265,320 @@
         box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
       }
 
+      /* Carousel Styles */
+      .hero-carousel {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
+        height: 400px;
+      }
+
+      .carousel-item {
+        height: 400px;
+      }
+
+      .carousel-item img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        padding: 25px;
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+        text-align: center;
+      }
+
+      .carousel-caption h3 {
+        color: var(--light-cream);
+        font-weight: bold;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .carousel-caption p {
+        color: #f8f9fa;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        font-style: italic;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.8;
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        opacity: 1;
+        background: var(--accent-color);
+      }
+
+      .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background: transparent;
+        margin: 0 5px;
+      }
+
+      .carousel-indicators button.active {
+        background: var(--primary-color);
+      }
+
+      .carousel-caption.slide-1 {
+        background: rgba(139, 69, 19, 0.8);
+      }
+
+      .carousel-caption.slide-2 {
+        background: rgba(106, 64, 41, 0.8);
+      }
+
+      .carousel-caption.slide-3 {
+        background: rgba(84, 50, 32, 0.8);
+      }
+
+      .carousel-caption.slide-4 {
+        background: rgba(63, 37, 24, 0.8);
+      }
+
+      /* Animasi untuk Profile Section */
+      .profile-title {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      .profile-title.animated {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .profile-text {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      .profile-text.animated {
+        animation: slideInLeft 0.8s ease forwards 0.3s;
+      }
+
+      .profile-image {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      .profile-image.animated {
+        animation: slideInRight 0.8s ease forwards 0.3s;
+      }
+
+      .vision-card {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .vision-card.animated {
+        animation: fadeInUp 0.8s ease forwards 0.6s;
+      }
+
+      .mission-card {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .mission-card.animated {
+        animation: fadeInUp 0.8s ease forwards 0.8s;
+      }
+
+      /* Animasi untuk Products Section */
+      .products-title {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      .products-title.animated {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .product-card:nth-child(1) {
+        animation-delay: 0.2s !important;
+      }
+      .product-card:nth-child(2) {
+        animation-delay: 0.4s !important;
+      }
+      .product-card:nth-child(3) {
+        animation-delay: 0.6s !important;
+      }
+      .product-card:nth-child(4) {
+        animation-delay: 0.8s !important;
+      }
+
+      /* Animasi untuk Quality Section */
+      .quality-title {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      .quality-title.animated {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .process-step {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      .process-step.animated {
+        animation: slideInLeft 0.8s ease forwards;
+      }
+
+      .process-step:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .process-step:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .process-step:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .process-step:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      .certification-card {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      .certification-card.animated {
+        animation: scaleIn 0.6s ease forwards;
+      }
+
+      .certification-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .certification-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .certification-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .certification-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      /* Animasi untuk Contact Section */
+      .contact-title {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      .contact-title.animated {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .contact-info {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      .contact-info.animated {
+        animation: slideInLeft 0.8s ease forwards 0.3s;
+      }
+
+      .contact-form {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      .contact-form.animated {
+        animation: slideInRight 0.8s ease forwards 0.3s;
+      }
+
+      .contact-detail-item {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .contact-detail-item.animated {
+        animation: slideInLeft 0.6s ease forwards;
+      }
+
+      .contact-detail-item:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .contact-detail-item:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      .contact-detail-item:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+      .contact-detail-item:nth-child(4) {
+        animation-delay: 1s;
+      }
+
+      /* Animasi untuk form fields */
+      .form-group {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .form-group.animated {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .form-group:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .form-group:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      .form-group:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .form-group:nth-child(4) {
+        animation-delay: 0.7s;
+      }
+      .form-group:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+      .form-group:nth-child(6) {
+        animation-delay: 0.9s;
+      }
+
+      /* Hover efek untuk icon */
+      .fas.fa-3x {
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .fas.fa-3x:hover {
+        transform: scale(1.2) rotate(10deg);
+        color: var(--secondary-color) !important;
+      }
+
+      /* Statistik angka animasi */
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        display: inline-block;
+        opacity: 0;
+      }
+
+      .stat-number.animated {
+        animation: pulse 2s ease infinite;
+      }
+
       @media (max-width: 768px) {
         .section {
           padding: 60px 0;
@@ -201,8 +587,29 @@
           font-size: 2rem;
         }
         .hero-section {
-          margin-top: 76px;
           text-align: center;
+        }
+        .hero-carousel {
+          height: 300px;
+        }
+        .carousel-item {
+          height: 300px;
+        }
+        .carousel-caption {
+          padding: 15px;
+          font-size: 0.9rem;
+          bottom: 20px;
+          left: 20px;
+          right: 20px;
+        }
+        .carousel-caption h3 {
+          font-size: 1.5rem;
+        }
+        .carousel-caption p {
+          font-size: 1rem;
+        }
+        .stat-number {
+          font-size: 2rem;
         }
       }
 
@@ -296,12 +703,123 @@
               >
             </div>
           </div>
-          <div class="col-lg-6 text-center">
-            <img
-              src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2061&q=80"
-              alt="Coffee Beans"
-              class="img-fluid rounded-3 shadow"
-            />
+          <div class="col-lg-6">
+            <!-- Carousel/Slider -->
+            <div
+              id="heroCarousel"
+              class="carousel slide hero-carousel"
+              data-bs-ride="carousel"
+              data-bs-interval="4000"
+            >
+              <!-- Indicators -->
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#heroCarousel"
+                  data-bs-slide-to="0"
+                  class="active"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#heroCarousel"
+                  data-bs-slide-to="1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#heroCarousel"
+                  data-bs-slide-to="2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#heroCarousel"
+                  data-bs-slide-to="3"
+                ></button>
+              </div>
+
+              <!-- Slides -->
+              <div class="carousel-inner">
+                <!-- Slide 1: Proses Pemanggangan -->
+                <div class="carousel-item active">
+                  <img src="img\petik.jpeg" alt="Proses petik" />
+                  <div class="carousel-caption slide-1">
+                    <h3>Proses Memetik</h3>
+                    <p>Dengan Pengalaman Menghasilkan Biji Berkualitas</p>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Share Coffee Share Happiness -->
+                <div class="carousel-item">
+                  <img
+                    src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                    class="d-block w-100"
+                    alt="People enjoying coffee together"
+                  />
+                  <div class="carousel-caption slide-2">
+                    <h3>Share Coffee, Share Happiness</h3>
+                    <p>
+                      Setiap cangkir kopi membawa kebahagiaan dan cerita baru
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Slide 3: Every Bean Has a Story -->
+                <div class="carousel-item">
+                  <img
+                    src="img/story.jpg"
+                    class="d-block w-100"
+                    alt="Coffee beans close up"
+                  />
+                  <div class="carousel-caption slide-3">
+                    <h3>Every Bean Has a Story</h3>
+                    <p>
+                      Setiap biji kopi memiliki perjalanan dan cerita uniknya
+                      sendiri
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Slide 4: Good Trees for Good Beans -->
+                <div class="carousel-item">
+                  <img
+                    src="img/coffe_trees.jpeg"
+                    class="d-block w-100"
+                    alt="Coffee trees on plantation"
+                  />
+                  <div class="carousel-caption slide-4">
+                    <h3>Good Trees for Good Beans</h3>
+                    <p>
+                      Pohon kopi yang sehat menghasilkan biji kopi berkualitas
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -312,7 +830,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <h2 class="display-5 fw-bold mb-3 text-primary">
+            <h2 class="display-5 fw-bold mb-3 text-primary profile-title">
               Profil Perusahaan
             </h2>
           </div>
@@ -320,8 +838,10 @@
 
         <div class="row align-items-center mb-5">
           <div class="col-lg-6">
-            <h3 class="h2 mb-4 text-primary">PT. Kopi Prima Indonesia</h3>
-            <p class="lead mb-4">
+            <h3 class="h2 mb-4 text-primary profile-text">
+              PT. Kopi Prima Indonesia
+            </h3>
+            <p class="lead mb-4 profile-text">
               Sebagai pelopor dalam industri kopi sejak 1985, Kopi Prima telah
               menjadi pemasok terpercaya biji kopi berkualitas tinggi dari
               berbagai daerah di Indonesia. Dengan pengalaman lebih dari 35
@@ -331,15 +851,15 @@
 
             <div class="row text-center">
               <div class="col-4">
-                <div class="h3 text-primary fw-bold">35+</div>
+                <div class="stat-number h3 text-primary fw-bold">35+</div>
                 <div class="text-muted">Tahun Pengalaman</div>
               </div>
               <div class="col-4">
-                <div class="h3 text-primary fw-bold">50+</div>
+                <div class="stat-number h3 text-primary fw-bold">50+</div>
                 <div class="text-muted">Jenis Produk</div>
               </div>
               <div class="col-4">
-                <div class="h3 text-primary fw-bold">1000+</div>
+                <div class="stat-number h3 text-primary fw-bold">1000+</div>
                 <div class="text-muted">Klien Terpuaskan</div>
               </div>
             </div>
@@ -348,14 +868,14 @@
             <img
               src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
               alt="Coffee Factory"
-              class="img-fluid rounded-3 shadow"
+              class="img-fluid rounded-3 shadow profile-image"
             />
           </div>
         </div>
 
         <div class="row mt-5">
           <div class="col-md-6">
-            <div class="card border-0 shadow-sm h-100">
+            <div class="card border-0 shadow-sm h-100 vision-card">
               <div class="card-body text-center p-4">
                 <i class="fas fa-eye fa-3x text-primary mb-3"></i>
                 <h4 class="card-title text-primary">Visi Kami</h4>
@@ -367,7 +887,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="card border-0 shadow-sm h-100">
+            <div class="card border-0 shadow-sm h-100 mission-card">
               <div class="card-body text-center p-4">
                 <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
                 <h4 class="card-title text-primary">Misi Kami</h4>
@@ -387,8 +907,10 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <h2 class="display-5 fw-bold mb-3 text-primary">Produk Kami</h2>
-            <p class="lead text-muted">
+            <h2 class="display-5 fw-bold mb-3 text-primary products-title">
+              Produk Kami
+            </h2>
+            <p class="lead text-muted products-title">
               Berbagai jenis biji kopi berkualitas dari daerah terbaik di
               Indonesia
             </p>
@@ -531,7 +1053,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <h2 class="display-5 fw-bold mb-3 text-primary">
+            <h2 class="display-5 fw-bold mb-3 text-primary quality-title">
               Standar Kualitas
             </h2>
           </div>
@@ -541,7 +1063,7 @@
           <div class="col-lg-6">
             <h3 class="h4 mb-4 text-primary">Proses Produksi Berkualitas</h3>
             <div class="process-steps">
-              <div class="d-flex mb-4">
+              <div class="d-flex mb-4 process-step">
                 <div class="step-number">01</div>
                 <div class="ms-3">
                   <h5 class="text-primary">Seleksi Biji</h5>
@@ -551,7 +1073,7 @@
                   </p>
                 </div>
               </div>
-              <div class="d-flex mb-4">
+              <div class="d-flex mb-4 process-step">
                 <div class="step-number">02</div>
                 <div class="ms-3">
                   <h5 class="text-primary">Pengolahan</h5>
@@ -561,7 +1083,7 @@
                   </p>
                 </div>
               </div>
-              <div class="d-flex mb-4">
+              <div class="d-flex mb-4 process-step">
                 <div class="step-number">03</div>
                 <div class="ms-3">
                   <h5 class="text-primary">Pemanggangan</h5>
@@ -571,7 +1093,7 @@
                   </p>
                 </div>
               </div>
-              <div class="d-flex">
+              <div class="d-flex process-step">
                 <div class="step-number">04</div>
                 <div class="ms-3">
                   <h5 class="text-primary">Pengemasan</h5>
@@ -587,7 +1109,7 @@
             <h3 class="h4 mb-4 text-primary">Sertifikasi</h3>
             <div class="row g-3">
               <div class="col-6">
-                <div class="card border-0 text-center h-100">
+                <div class="card border-0 text-center h-100 certification-card">
                   <div class="card-body">
                     <i class="fas fa-certificate fa-2x text-primary mb-3"></i>
                     <h6 class="text-primary">ISO 9001:2015</h6>
@@ -596,7 +1118,7 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="card border-0 text-center h-100">
+                <div class="card border-0 text-center h-100 certification-card">
                   <div class="card-body">
                     <i class="fas fa-leaf fa-2x text-primary mb-3"></i>
                     <h6 class="text-primary">Organic Certified</h6>
@@ -605,7 +1127,7 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="card border-0 text-center h-100">
+                <div class="card border-0 text-center h-100 certification-card">
                   <div class="card-body">
                     <i class="fas fa-recycle fa-2x text-primary mb-3"></i>
                     <h6 class="text-primary">Sustainability</h6>
@@ -614,7 +1136,7 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="card border-0 text-center h-100">
+                <div class="card border-0 text-center h-100 certification-card">
                   <div class="card-body">
                     <i class="fas fa-globe fa-2x text-primary mb-3"></i>
                     <h6 class="text-primary">Export Ready</h6>
@@ -633,38 +1155,40 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <h2 class="display-5 fw-bold mb-3 text-primary">Hubungi Kami</h2>
+            <h2 class="display-5 fw-bold mb-3 text-primary contact-title">
+              Hubungi Kami
+            </h2>
           </div>
         </div>
 
         <div class="row g-5">
-          <div class="col-lg-6">
+          <div class="col-lg-6 contact-info">
             <h3 class="h4 mb-4 text-primary">PT. Kopi Prima Indonesia</h3>
             <div class="contact-details">
-              <div class="d-flex align-items-start mb-3">
+              <div class="d-flex align-items-start mb-3 contact-detail-item">
                 <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
                 <div>
                   <h5 class="h6 mb-1 text-primary">Alamat</h5>
                   <p class="text-muted mb-0">
-                    Jl. Perkebunan No. 123<br />Jakarta Selatan 12560
+                    Jl. Perkebunan No. 122<br />Jakarta Selatan 12560
                   </p>
                 </div>
               </div>
-              <div class="d-flex align-items-start mb-3">
+              <div class="d-flex align-items-start mb-3 contact-detail-item">
                 <i class="fas fa-phone text-primary me-3 mt-1"></i>
                 <div>
                   <h5 class="h6 mb-1 text-primary">Telepon</h5>
                   <p class="text-muted mb-0">+62 857 9992 6085</p>
                 </div>
               </div>
-              <div class="d-flex align-items-start mb-3">
+              <div class="d-flex align-items-start mb-3 contact-detail-item">
                 <i class="fas fa-envelope text-primary me-3 mt-1"></i>
                 <div>
                   <h5 class="h6 mb-1 text-primary">Email</h5>
                   <p class="text-muted mb-0">info@kopiprima.co.id</p>
                 </div>
               </div>
-              <div class="d-flex align-items-start">
+              <div class="d-flex align-items-start contact-detail-item">
                 <i class="fas fa-clock text-primary me-3 mt-1"></i>
                 <div>
                   <h5 class="h6 mb-1 text-primary">Jam Operasional</h5>
@@ -676,13 +1200,13 @@
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-6 contact-form">
             <div class="card shadow border-0">
               <div class="card-body p-4">
                 <h3 class="card-title h4 mb-4 text-primary">Kirim Pesan</h3>
                 <form id="contactForm">
                   <div class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 form-group">
                       <label for="name" class="form-label text-primary"
                         >Nama *</label
                       >
@@ -693,7 +1217,7 @@
                         required
                       />
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 form-group">
                       <label for="email" class="form-label text-primary"
                         >Email *</label
                       >
@@ -704,7 +1228,7 @@
                         required
                       />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 form-group">
                       <label for="phone" class="form-label text-primary"
                         >Nomor Telepon *</label
                       >
@@ -715,13 +1239,13 @@
                         required
                       />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 form-group">
                       <label for="company" class="form-label text-primary"
                         >Perusahaan</label
                       >
                       <input type="text" class="form-control" id="company" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 form-group">
                       <label for="message" class="form-label text-primary"
                         >Pesan *</label
                       >
@@ -732,7 +1256,7 @@
                         required
                       ></textarea>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 form-group">
                       <button
                         type="submit"
                         class="btn btn-primary btn-lg w-100"
@@ -897,8 +1421,61 @@
         alert("Anda telah logout!");
       }
 
+      // Animasi observer
+      function initAnimations() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animated");
+            }
+          });
+        }, observerOptions);
+
+        // Elemen yang akan di-animasi
+        const elementsToAnimate = [
+          ".profile-title",
+          ".profile-text",
+          ".profile-image",
+          ".vision-card",
+          ".mission-card",
+          ".products-title",
+          ".product-card",
+          ".quality-title",
+          ".process-step",
+          ".certification-card",
+          ".contact-title",
+          ".contact-info",
+          ".contact-form",
+          ".contact-detail-item",
+          ".form-group",
+          ".stat-number",
+        ];
+
+        elementsToAnimate.forEach((selector) => {
+          document.querySelectorAll(selector).forEach((element) => {
+            observer.observe(element);
+          });
+        });
+
+        // Animasi untuk angka statistik (pulse effect setelah muncul)
+        const statNumbers = document.querySelectorAll(".stat-number");
+        statNumbers.forEach((stat, index) => {
+          stat.addEventListener("animationend", () => {
+            setTimeout(() => {
+              stat.classList.add("animated");
+            }, 500 * (index + 1));
+          });
+        });
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         updateAuthUI();
+        initAnimations();
 
         document.getElementById("logoutBtn")?.addEventListener("click", logout);
 
