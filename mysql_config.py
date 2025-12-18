@@ -28,10 +28,10 @@ class MySQLDatabase:
         if connection:
             try:
                 cursor = connection.cursor()
-                cursor.execute("SELECT id FROM customers WHERE username = %s", (username,))
+                cursor.execute("SELECT id FROM users WHERE username = %s", (username,))
                 if cursor.fetchone():
                     return "username"
-                cursor.execute("SELECT id FROM customers WHERE email = %s", (email,))
+                cursor.execute("SELECT id FROM users WHERE email = %s", (email,))
                 if cursor.fetchone():
                     return "email"
                     
@@ -52,7 +52,7 @@ class MySQLDatabase:
             try:
                 cursor = connection.cursor()
                 query = """
-                INSERT INTO customers (username, password, email, phone) 
+                INSERT INTO users (username, password, email, phone) 
                 VALUES (%s, %s, %s, %s)
                 """
                 values = (
@@ -82,7 +82,7 @@ class MySQLDatabase:
         if connection:
             try:
                 cursor = connection.cursor(dictionary=True)
-                query = "SELECT id, username, email, phone FROM customers WHERE username = %s AND password = %s"
+                query = "SELECT id, username, email, phone FROM users WHERE username = %s AND password = %s"
                 cursor.execute(query, (username, password))
                 user = cursor.fetchone()
                 
@@ -111,12 +111,12 @@ class MySQLDatabase:
                 db_name = cursor.fetchone()
                 print(f"✅ Connected to database: {db_name[0]}")
                 
-                cursor.execute("SHOW TABLES LIKE 'customers'")
+                cursor.execute("SHOW TABLES LIKE 'users'")
                 table_exists = cursor.fetchone()
                 if table_exists:
-                    print("✅ Table 'customers' exists")
+                    print("✅ Table 'users' exists")
                 else:
-                    print("❌ Table 'customers' does not exist")
+                    print("❌ Table 'users' does not exist")
                     
                 return True
             except Error as e:
