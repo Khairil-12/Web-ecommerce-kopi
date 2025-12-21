@@ -248,14 +248,6 @@ class AuthSystem {
       const userName = document.getElementById("userName");
       const userGreeting = document.getElementById("userGreeting");
 
-      // PERBAIKAN: Tambahkan tombol dashboard
-      const dashboardBtn = document.getElementById("dashboardBtn");
-
-      // Buat tombol dashboard jika belum ada
-      if (!dashboardBtn && auth.success) {
-        this.createDashboardButton();
-      }
-
       if (auth.success && auth.user) {
         // User is logged in
         console.log("Setting UI to logged in state for:", auth.user.username);
@@ -271,12 +263,6 @@ class AuthSystem {
         // Sembunyikan tombol login
         if (loginBtn) {
           loginBtn.classList.add("d-none");
-        }
-
-        // Tampilkan tombol dashboard
-        const existingDashboardBtn = document.getElementById("dashboardBtn");
-        if (existingDashboardBtn) {
-          existingDashboardBtn.classList.remove("d-none");
         }
 
         // Tampilkan tombol logout
@@ -313,12 +299,6 @@ class AuthSystem {
           loginBtn.href = "login.html";
         }
 
-        // Sembunyikan tombol dashboard
-        const existingDashboardBtn = document.getElementById("dashboardBtn");
-        if (existingDashboardBtn) {
-          existingDashboardBtn.classList.add("d-none");
-        }
-
         // Sembunyikan tombol logout
         if (logoutBtn) {
           logoutBtn.classList.add("d-none");
@@ -339,38 +319,6 @@ class AuthSystem {
       console.log("UI update complete");
     } catch (error) {
       console.error("Error updating auth UI:", error);
-    }
-  }
-
-  // Buat tombol dashboard secara dinamis
-  createDashboardButton() {
-    const navbarNav = document.querySelector(".navbar-nav");
-    if (!navbarNav) return;
-
-    // Cek apakah tombol dashboard sudah ada
-    if (document.getElementById("dashboardBtn")) return;
-
-    // Buat tombol dashboard
-    const dashboardBtn = document.createElement("a");
-    dashboardBtn.id = "dashboardBtn";
-    dashboardBtn.className = "nav-link d-none";
-    dashboardBtn.href = "dashboard.html";
-    dashboardBtn.innerHTML =
-      '<i class="fas fa-tachometer-alt me-1"></i>Dashboard';
-
-    // Tambahkan ke navbar
-    const li = document.createElement("li");
-    li.className = "nav-item";
-    li.appendChild(dashboardBtn);
-
-    // Tempatkan sebelum tombol Logout di navbar
-    const logoutLi = document
-      .querySelector('.nav-item .nav-link[href="login.html"]')
-      ?.closest(".nav-item");
-    if (logoutLi) {
-      navbarNav.insertBefore(li, logoutLi.nextSibling);
-    } else {
-      navbarNav.appendChild(li);
     }
   }
 
